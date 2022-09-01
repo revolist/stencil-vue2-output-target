@@ -4,8 +4,8 @@ export const createCommonRender = (
   tagName: string,
   eventNames: string[] = []
 ) =>
-  function (createElement: CreateElement): VNode {
-    const vueElement = this as Vue;
+  function (this: Vue, createElement: CreateElement): VNode {
+    const vueElement = this;
     const allListeners = eventNames.reduce((listeners, eventName) => {
       return {
         ...listeners,
@@ -38,7 +38,7 @@ export const createCommonRender = (
   };
 
 export const createCommonMethod = (methodName: string) =>
-  function (...args: any[]) {
+  function (this: any, ...args: any[]) {
     this.$refs.wc[methodName](...args);
   } as unknown;
 

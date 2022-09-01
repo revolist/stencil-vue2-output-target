@@ -97,8 +97,10 @@ import { createCommonRender, createCommonMethod } from './vue-component-lib/util
     !outputTarget.includePolyfills &&
     outputTarget.includeDefineCustomElements
   ) {
-    sourceImports = `import { ${REGISTER_CUSTOM_ELEMENTS} } from '${pathToCorePackageLoader}';\n`;
-    registerCustomElements = `${REGISTER_CUSTOM_ELEMENTS}();`;
+    sourceImports = `
+    import * as Default from '${pathToCorePackageLoader}';\n
+    export default Default;\n
+    `;
   }
 
   const final: string[] = [
