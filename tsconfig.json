@@ -13,6 +13,7 @@
     "target": "es2019",
     "noUnusedLocals": true,
     "noUnusedParameters": false,
+    "skipLibCheck": true,
     "outDir": "dist",
     "jsx": "preserve"
   },
